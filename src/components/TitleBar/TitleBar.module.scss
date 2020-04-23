@@ -1,0 +1,173 @@
+@import "../../styles/constants";
+
+.titlebar {
+  //position: fixed;
+  position: relative;
+  width: 100%;
+  color: rgba($color: $titlebar-secondary-color, $alpha: 0.8);
+  background: $titlebar-primary-color;
+
+  font-size: 1.3rem;
+}
+
+.drag-region {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  -webkit-app-region: drag;
+}
+
+.drag-region--unmaximized::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  -webkit-app-region: no-drag;
+}
+
+.drag-region--unmaximized::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  -webkit-app-region: no-drag;
+}
+
+.icon-title {
+  display: flex;
+  align-items: center;
+
+  & > span {
+    margin-left: 0.2rem;
+  }
+}
+
+.window-controls {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+
+  -webkit-app-region: no-drag;
+}
+
+.window-control-button {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 100%;
+  transition: all 300ms;
+
+  user-select: none;
+  &:hover {
+    background: rgba($color: $titlebar-secondary-color, $alpha: 0.1);
+  }
+}
+
+.close-button {
+  &:hover {
+    background: #e81123 !important;
+  }
+  &:active {
+    background: #f1707a !important;
+    & .window-control-icon {
+      filter: invert(1);
+    }
+  }
+}
+
+.min-button:before {
+  content: "";
+  width: 10px;
+  height: 1px;
+  position: absolute;
+  left: calc(50% - 5px);
+  top: calc(50% - 1px);
+  background: $titlebar-secondary-color;
+  opacity: 0.6;
+  transition: all 300ms;
+}
+
+.min-button:hover:before {
+  opacity: 1;
+}
+
+.max-button:before {
+  content: "";
+  width: 10.5px;
+  height: 10.5px;
+  border: 1px solid rgba($color: $titlebar-secondary-color, $alpha: 0.6);
+  position: absolute;
+  top: calc(50% - 5.25px);
+  left: calc(50% - 5.25px);
+  transition: all 300ms;
+}
+
+.restore-button:after,
+.restore-button:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  transition: all 300ms;
+  top: calc(50% - 4px);
+  left: calc(50% - 4px);
+}
+
+.restore-button:before {
+  border: 1px solid rgba($color: $titlebar-secondary-color, $alpha: 0.6);
+}
+
+.restore-button:after {
+  border: 1px solid rgba($color: $titlebar-secondary-color, $alpha: 0.6);
+  background-color: $titlebar-primary-color;
+  opacity: 0.9;
+  top: calc(50% - 1.8px);
+  left: calc(50% - 6.5px);
+}
+.restore-button:hover:after,
+.restore-button:hover:before,
+.max-button:hover:before,
+.max-button:hover:after {
+  border-color: rgba($color: $titlebar-secondary-color, $alpha: 1);
+}
+
+.close-button:before,
+.close-button:after {
+  content: "";
+  width: 1px;
+  height: 14px;
+  position: absolute;
+  top: calc(50%-7px);
+  left: calc(50%-0.5px);
+  transform-origin: center;
+  background: $titlebar-secondary-color;
+  opacity: 0.9;
+  transition: all 300ms;
+}
+
+.close-button:hover::before,
+.close-button:hover::after {
+  opacity: 1;
+}
+
+.close-button::before {
+  transform: rotate(45deg);
+}
+
+.close-button::after {
+  transform: rotate(-45deg);
+}

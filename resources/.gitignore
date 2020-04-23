@@ -1,0 +1,5 @@
+python-code/.vscode/
+python-code/build/
+python-code/venv/
+python-code/python.spec
+python.exe
