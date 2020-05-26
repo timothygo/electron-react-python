@@ -4,7 +4,7 @@ import styles from "./Home.module.scss";
 import { useDispatch } from "react-redux";
 import useCounterState from "../../redux/selectors/useCounterState";
 
-const { ipcRenderer } = window.require("electron");
+const ipcRenderer = window.ipcRenderer;
 
 const Home = () => {
   const dispatch = useDispatch();

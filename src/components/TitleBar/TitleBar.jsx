@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./TitleBar.module.scss";
 
-const remote = window.require("electron").remote;
+const remote = window.remote;
 const win = remote.getCurrentWindow();
 
 const TitleBar = ({ height = 30, title, icon, dropShadow = false }) => {
