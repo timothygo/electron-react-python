@@ -27,9 +27,8 @@ class Server:
             if message['message'] == "INVOKE":
                 invoke_func = getattr(self.functions, message["function_name"], -1)
                 if invoke_func != -1 and callable(invoke_func):
-                    args = tuple(message['args'])
                     try:
-                        self.socket.send_json(create_reply(message["callback"], invoke_func(self.functions, *args)))
+                        self.socket.send_json(create_reply(message["callback"], invoke_func(self.functions, **message["args"])))
                     except Exception as e:
                         self.socket.send_json(create_reply(message["callback"], None, error=repr(e)))
                 else:
