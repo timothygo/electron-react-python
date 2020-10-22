@@ -43,8 +43,10 @@ app.on("ready", () => {
     isDev ? `http://localhost:3000#/` : `file://${__dirname}/index.html`
   );
 
-  client = new Client();
-  client.connect(config.port);
+  client = new Client((sub_message)=>{
+    console.log(sub_message)
+  });
+  client.connect(config.port_req, config.port_sub);
 
   //listen to actions
   for (action in actions) {
