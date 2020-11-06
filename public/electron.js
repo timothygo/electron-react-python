@@ -64,6 +64,7 @@ app.on("ready", () => {
 });
 
 app.on("quit", () => {
+  client.unsubscribe();
   client.send("quit");
   python.kill();
 });
