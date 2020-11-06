@@ -53,6 +53,10 @@ class Client {
   send(message) {
     this.req.send(JSON.stringify({ message: message }));
   }
+  
+  unsubscribe(){
+    this.sub.close()
+  }
 }
 
 module.exports = Client;
